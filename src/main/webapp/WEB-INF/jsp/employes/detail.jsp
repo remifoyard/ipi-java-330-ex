@@ -27,8 +27,9 @@
 <% employe = (Employe) pageContext.findAttribute("model");%>
 <div class="container">
     <h2>Détail du ${model.className} ${model.matricule}</h2>
-    <form action="/<%= employe.getClassName().toLowerCase() + "s"%>/<%= employe.getId() == null ? "save" : employe.getId() %>" method="post">
+
     <div class="row">
+        <form id="saveForm" action="/<%= employe.getClassName().toLowerCase() + "s"%>/<%= employe.getId() == null ? "save" : employe.getId() %>" method="post">
         <div class="col-lg-6">
             <div class="form-group">
                 <label class="form-control-label" for="nom">Nom</label>
@@ -76,17 +77,11 @@
                 <% if (employe instanceof Technicien) { %>
                 <label class="form-control-label" for="grade">Grade</label>
                 <input type="number" value="${model.grade}" class="form-control" name="grade" id="grade">
-
-                <label class="form-control-label">Manager</label>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="/employes/${model.manager.id}">${model.manager.prenom} ${model.manager.nom}
-                            <span class="badge pull-right">${model.manager.matricule}</span></a>
-                    </li>
-                </ul>
                 <% } %>
 
-                <% if (employe instanceof Manager) { %>
+
+
+                <% if (employe instanceof Manager && employe.getId() != null) { %>
                 <label class="form-control-label" for="performance">Equipe</label>
                 <div class="row">
                     <div class="col-lg-10">
@@ -104,32 +99,63 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-10">
-                        <%--{{input type="text" value=matriculeToAdd placeholder="Ajouter un technicien avec le matricule..." class="form-control"}}--%>
-                    </div>
-                    <div class="col-lg-2 text-center">
-                        <%--<button {{action "addTechniciens" matriculeToAdd}} class="btn-success list-group-item list-group-item-action"><span class="glyphicon glyphicon-plus"></span></button>--%>
-
-                    </div>
-                </div>
                 <% } %>
             </div>
         </div>
+        </form>
+        <div class="col-lg-6">
+            <input form="saveForm" class="btn btn-primary" type="submit" value="Enregistrer"></input>
+            <c:if test="${!empty model.id}">
+                <a href="/employes/${model.id}/delete" class="btn btn-danger">Supprimer</a>
+            </c:if>
+        </div>
+        <div class="col-lg-6">
+            <% if (employe instanceof Manager && employe.getId() != null) { %>
+            <form action="/managers/${model.id}/techniciens/add" method="get">
+                <div class="col-lg-10">
+                    <input type="text" name="matricule" value="" placeholder="Ajouter un technicien avec le matricule..." class="form-control">
+                </div>
+                <div class="col-lg-2 text-center">
+                    <button type="submit" class="btn-success list-group-item list-group-item-action"><span class="glyphicon glyphicon-plus"></span></button>
+                </div>
+            </form>
+            <% } %>
+            <% if (employe instanceof Technicien && employe.getId() != null) { %>
+                <div class="row">
+                    <% if(((Technicien) employe).getManager() != null) { %>
+                    <div class="col-lg-12">
+                        <label class="form-control-label">Manager</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="/employes/${model.manager.id}">${model.manager.prenom} ${model.manager.nom}
+                                    <span class="badge pull-right">${model.manager.matricule}</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2">
+                        <li class="list-group-item"><a href="/techniciens/${model.id}/manager/${model.manager.id}/delete"><span class="glyphicon glyphicon-remove"></span></a></li>
+                    </div>
+                    <% } else { %>
+                    <form action="/techniciens/${model.id}/manager/add" method="get">
+                    <div class="col-lg-10">
+                        <input type="text" name="matricule" value="" placeholder="Ajouter un manager avec le matricule..." class="form-control">
+                    </div>
+                    <div class="col-lg-2 text-center">
+                        <button type="submit" class="btn-success list-group-item list-group-item-action"><span class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                    </form>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
     </div>
 
-    <div class="row">
-        <button class="btn btn-primary">Enregistrer</button>
-    </div>
-    </form>
-    <div class="row">
-        <c:if test="${!empty model.id}">
-            <a href="/employes/${model.id}/delete" class="btn btn-danger">Supprimer</a>
-        </c:if>
-    </div>
 </div>
 
-<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 

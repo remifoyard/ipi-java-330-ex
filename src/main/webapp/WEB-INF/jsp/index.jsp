@@ -48,11 +48,11 @@
             </li>
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">6 - Modification d'un Commercial</h4>
-                <p class="list-group-item-text">En cliquant <a href="/employes/8"></a> ou en consultant les détails du commercial de matricule <em>C00002</em> (id 8), il est possible de modifier les informations du commercial d'identifiant 8 qui sont persistées en base de donnée lorsqu'on clique sur le bouton <em>Enregistrer</em>. L'URL qui est appelé est <code>POST /commercials/8</code> avec les données du formulaire qui sont envoyées.</p>
+                <p class="list-group-item-text">En cliquant <a href="/employes/8">ici</a> ou en consultant les détails du commercial de matricule <em>C00002</em> (id 8), il est possible de modifier les informations du commercial d'identifiant 8 qui sont persistées en base de donnée lorsqu'on clique sur le bouton <em>Enregistrer</em>. L'URL qui est appelé est <code>POST /commercials/8</code> avec les données du formulaire qui sont envoyées.</p>
             </li>
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">7 - Suppression d'un Commercial</h4>
-                <p class="list-group-item-text">En cliquant {{#link-to "commercials.detail" 22}}ici{{/link-to}} ou en consultant les détails du commercial de matricule <em>C00018</em> (id 22), il est possible de supprimer ce dernier lorsqu'on clique sur le bouton <em>Supprimer</em>. L'appel qui est effectué est <code>DELETE /employes/22</code>.</p>
+                <p class="list-group-item-text">En cliquant <a href="/employes/22">ici</a> ou en consultant les détails du commercial de matricule <em>C00018</em> (id 22), il est possible de supprimer ce dernier lorsqu'on clique sur le bouton <em>Supprimer</em>. L'appel qui est effectué est <code>GET /employes/22/delete</code>.</p>
             </li>
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">8 - Création, modification et suppression d'un Technicien</h4>
@@ -64,24 +64,18 @@
             </li>
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">10 - Ajouter ou supprimer un technicien dans l'équipe d'un manager</h4>
-                <p class="list-group-item-text">En cliquant {{#link-to "managers.detail" 532}}ici{{/link-to}} ou en consultant le détail du manager <em>M00528</em> (id 532), il est possible de supprimer (Appel API <code>GET /managers/532/equipe/576/remove</code>) un membre de son équipe avec le bouton <span class="glyphicon glyphicon-remove"></span> et d'ajouter (Appel API <code>GET /managers/532/equipe/T00110/add</code>) un membre à l'équipe en renseignant son matricule (dans l'exemple T00110) et en cliquant sur le bouton <span class="glyphicon glyphicon-plus"></span>.</p>
+                <p class="list-group-item-text">En cliquant <a href="/employes/532">ici</a> ou en consultant le détail du manager <em>M00528</em> (id 532), il est possible de supprimer (Appel API <code>GET /managers/532/techniciens/576/delete</code>) un membre de son équipe (ici le technicien d'id 576) avec le bouton <span class="glyphicon glyphicon-remove"></span> et d'ajouter (Appel API <code>GET /managers/532/techniciens/add?matricule=T00110</code>) un membre à l'équipe en renseignant son matricule (dans l'exemple T00110) et en cliquant sur le bouton <span class="glyphicon glyphicon-plus"></span>.</p>
             </li>
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">11 - Ajouter ou supprimer un manager à un technicien</h4>
-                <p class="list-group-item-text">En cliquant {{#link-to "techniciens.detail" 576}}ici{{/link-to}} ou en consultant le détail du technicien <em>T00572</em> (id 576), il est possible de supprimer (Appel API déjà développé dans la modification du technicien) un membre de son équipe avec le bouton <span class="glyphicon glyphicon-remove"></span> et d'ajouter (Appel API <code>GET /techniciens/576/equipe/M00528/add</code>) un membre à l'équipe en renseignant son matricule (dans l'exemple M00528) et en cliquant sur le bouton <span class="glyphicon glyphicon-plus"></span>.</p>
+                <p class="list-group-item-text">En cliquant <a href="/employes/576">ici</a> ou en consultant le détail du technicien <em>T00572</em> (id 576), il est possible de supprimer (GET /techniciens/576/manager/remove) son manager avec le bouton <span class="glyphicon glyphicon-remove"></span> et d'ajouter (Appel API <code>GET /techniciens/576/manager/M00528/add</code>) un manager en renseignant son matricule (dans l'exemple M00528) et en cliquant sur le bouton <span class="glyphicon glyphicon-plus"></span>.</p>
             </li>
         </ul>
     </div>
-    <c:url value="/resources/text.txt" var="url"/>
-    <spring:url value="/resources/text.txt" htmlEscape="true" var="springUrl" />
-    Spring URL: ${springUrl} at ${time}
-    <br>
-    JSTL URL: ${url}
-    <br>
-    Message: ${message}
 </div>
 
 
+<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>

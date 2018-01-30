@@ -21,7 +21,7 @@ public class CommercialController extends NavBarController{
         }
         model.put("model", employe);
 
-        return new RedirectView("/employes/ " + id);
+        return new RedirectView("/employes/" + id);
     }
 
     @PostMapping("/save")
@@ -30,5 +30,5 @@ public class CommercialController extends NavBarController{
         employe = this.employeService.creerEmploye(employe);
         model.put("model", employe);
 
-        return new RedirectView("/employes/ " + employe.getId());    }
+        return new RedirectView("/employes/" + employe.getId());    }
 }

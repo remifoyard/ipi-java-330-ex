@@ -4,10 +4,7 @@ import com.ipiecoles.java.java320.model.Manager;
 import com.ipiecoles.java.java320.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Map;
@@ -26,12 +23,11 @@ public class ManagerController extends NavBarController{
         return "employes/detail";
     }
 
-    @GetMapping("/{id}/techniciens/{matricule}/add")
-    public String deleteTechnicien(@PathVariable("id") Long id, @PathVariable("matricule") String matricule, Map<String, Object> model){
+    @GetMapping("/{id}/techniciens/add")
+    public RedirectView deleteTechnicien(@PathVariable("id") Long id, @RequestParam("matricule") String matricule, Map<String, Object> model){
         super.index(model);
         managerService.addTechniciens(id, matricule);
-        model.put("model", employeService.findById(id));
-        return "employes/detail";
+        return new RedirectView("/employes/" + id);
     }
 
     @PostMapping("/{id}")
@@ -42,7 +38,7 @@ public class ManagerController extends NavBarController{
         }
         model.put("model", employe);
 
-        return new RedirectView("/employes/ " + id);
+        return new RedirectView("/employes/" + id);
     }
 
     @PostMapping("/save")
