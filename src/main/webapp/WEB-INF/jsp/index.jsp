@@ -1,10 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ include file="tags/header.jsp" %>
-
 <div class="container">
     <div class="jumbotron">
-        <h1>Bienvenue dans l'interface de gestion des <span>${nbEmployes}</span> employés !</h1>
+        <h1>Bienvenue dans l'interface de gestion des <span></span> employés !</h1>
         <p>Cette application web est paramétrée pour communiquer avec une API REST accessible à l'adresse <code>http://localhost:5367</code>.</p>
         <p>Il est nécessaire de développer les services webs nécessaires pour que cette application fonctionne. Voici l'ensemble des fonctionnalités :</p>
         <ul class="list-group">
@@ -56,4 +52,3 @@
     </div>
 </div>
 
-<%@ include file="tags/footer.jsp" %>
