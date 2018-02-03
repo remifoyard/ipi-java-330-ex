@@ -1,28 +1,10 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="en" >
-<head>
-
-    <!-- Access the bootstrap Css like this,
-        Spring boot will handle the resource mapping automcatically -->
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
-    <!--
-	<spring:url value="/css/main.css" var="springCss" />
-	<link href="${springCss}" rel="stylesheet" />
-	 -->
-    <c:url value="/css/main.css" var="jstlCss" />
-    <link href="${jstlCss}" rel="stylesheet" />
-    <%@ page contentType="text/html; charset=UTF-8" %>
-
-</head>
-<body>
-<%@ include file="tags/navbar.jsp"%>
-
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="tags/header.jsp" %>
 
 <div class="container">
     <div class="jumbotron">
-        <h1>Bienvenue dans l'interface de gestion des employés !</h1>
+        <h1>Bienvenue dans l'interface de gestion des <span>${nbEmployes}</span> employés !</h1>
         <p>Cette application web est paramétrée pour communiquer avec une API REST accessible à l'adresse <code>http://localhost:5367</code>.</p>
         <p>Il est nécessaire de développer les services webs nécessaires pour que cette application fonctionne. Voici l'ensemble des fonctionnalités :</p>
         <ul class="list-group">
@@ -74,10 +56,4 @@
     </div>
 </div>
 
-
-<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.js"></script>
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+<%@ include file="tags/footer.jsp" %>
