@@ -1,4 +1,4 @@
-USE entreprise;
+USE entrepriseJava;
 
 DROP TABLE IF EXISTS `Employe`;
 CREATE TABLE `Employe` (

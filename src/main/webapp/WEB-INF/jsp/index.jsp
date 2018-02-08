@@ -1,8 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="tags/header.jsp" %>
 <div class="container">
     <div class="jumbotron">
-        <h1>Bienvenue dans l'interface de gestion des <span></span> employés !</h1>
+        <h1>Bienvenue dans l'interface de gestion des <span>${nbrEmploye}, <%= pageContext.findAttribute("nbrEmploye")%></span> employés !</h1>
         <p>Cette application web est paramétrée pour communiquer avec une API REST accessible à l'adresse <code>http://localhost:5367</code>.</p>
         <p>Il est nécessaire de développer les services webs nécessaires pour que cette application fonctionne. Voici l'ensemble des fonctionnalités :</p>
+
         <ul class="list-group">
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">1 - Compter le nombre d'employés</h4>
@@ -50,5 +53,6 @@
             </li>
         </ul>
     </div>
+    <%@ include file="tags/footer.jsp" %>
 </div>
 
