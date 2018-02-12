@@ -110,8 +110,8 @@
                     <div class="col-lg-10">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="">Prénom Nom
-                                    <span class="badge pull-right">Matricule</span></a>
+                                <a href="/employes/${employe.manager.id}">${employe.manager.prenom} ${employe.manager.nom}
+                                    <span class="badge pull-right">${employe.manager.matricule}</span></a>
                             </li>
                         </ul>
                     </div>
@@ -120,7 +120,7 @@
                     </div>
                     <% } %>
                     <p>Sinon</p>
-                    <form action="" method="get">
+                    <form action="/techniciens/${employe.id}/manager/add" method="get">
                     <div class="col-lg-10">
                         <input type="text" name="matricule" value="" placeholder="Ajouter un manager avec le matricule..." class="form-control">
                     </div>
