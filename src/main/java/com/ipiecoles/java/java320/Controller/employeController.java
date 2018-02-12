@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.EntityNotFoundException;
 import java.lang.Long;
@@ -58,5 +60,19 @@ public class employeController {
         model.put("start", page * size +1);
         model.put("end", page * size + emp.getNumberOfElements());
         return "employes/liste";
+    }
+
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET )
+    public RedirectView deleteEmp(@PathVariable(value = "id") Long idE, RedirectAttributes attributes){
+        if(idE == 0 || idE == null){return new RedirectView("erreur");}
+        else {
+            employeService.deleteEmploye(idE);
+            attributes.addAttribute("page", 0);
+            attributes.addAttribute("size", 10);
+            attributes.addAttribute("sortProperty", "matricule");
+            attributes.addAttribute("sortDirection", "ASC");
+            attributes.addAttribute("success", "Suppression effectuée");
+            return new RedirectView("/employes");
+        }
     }
 }

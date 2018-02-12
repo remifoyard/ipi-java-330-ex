@@ -41,12 +41,12 @@
 
 
                 <label class="form-control-label" for="nom">Date d'embauche</label>
-                <input type="text" value="${employe.getDateEmbauche()}" class="form-control" name="dateEmbauche" id="dateEmbauche">
+                <input type="text" value="${employe.getDateEmbauche().toString('dd/MM/YYYY')}" class="form-control" name="dateEmbauche" id="dateEmbauche">
 
                 <% if(emp instanceof Commercial) { %>
                     <p>Si l'employé est un commercial</p>
                     <label class="form-control-label" for="performance">Performance</label>
-                    <input type="number" value="${employe.getPrimeAnnuelle()}" class="form-control" name="performance" id="performance">
+                    <input type="number" value="" class="form-control" name="performance" id="performance">
 
                     <label class="form-control-label" for="caAnnuel">CA Annuel</label>
                     <div class="input-group">
@@ -57,7 +57,7 @@
                 <% if(emp instanceof Technicien) { %>
                     <p>Si l'employé est un technicien</p>
                     <label class="form-control-label" for="grade">Grade</label>
-                    <input type="number" value="" class="form-control" name="grade" id="grade">
+                    <input type="number" value="${employe.getGrade()}" class="form-control" name="grade" id="grade">
                 <% } %>
 
 
@@ -84,7 +84,7 @@
         </form>
         <div class="col-lg-6">
             <input form="saveForm" class="btn btn-primary" type="submit" value="Enregistrer"/>
-                <a href="" class="btn btn-danger">Supprimer</a>
+                <a href="/employes/${employe.getId()}/delete" class="btn btn-danger">Supprimer</a>
         </div>
         <div class="col-lg-6">
             <% if(emp instanceof Manager && emp.getId() != null) { %>

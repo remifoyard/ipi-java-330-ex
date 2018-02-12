@@ -60,7 +60,7 @@
                             <th scope="row"><c:out value = "${emp.matricule}"/></th>
                             <td><c:out value = "${emp.nom}"/></td>
                             <td><c:out value = "${emp.prenom}"/></td>
-                            <td><a href="">Détail</a></td>
+                            <td><a href="employes/${emp.id}">Détail</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
