@@ -1,6 +1,9 @@
 package com.ipiecoles.java.java320.Controller;
 
+import com.ipiecoles.java.java320.model.Commercial;
 import com.ipiecoles.java.java320.model.Employe;
+import com.ipiecoles.java.java320.model.Manager;
+import com.ipiecoles.java.java320.model.Technicien;
 import com.ipiecoles.java.java320.service.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -74,5 +77,23 @@ public class employeController {
             attributes.addAttribute("success", "Suppression effectuée");
             return new RedirectView("/employes");
         }
+    }
+
+    @RequestMapping(value = "/new/commercial", method = RequestMethod.GET)
+    public String newCommercial(Map<String, Object> model) {
+        model.put("employe", new Commercial());
+        return "employes/detail";
+    }
+
+    @RequestMapping(value = "/new/technicien", method = RequestMethod.GET)
+    public String newTechnicien(Map<String, Object> model) {
+        model.put("employe", new Technicien());
+        return "employes/detail";
+    }
+
+    @RequestMapping(value = "/new/manager", method = RequestMethod.GET)
+    public String newManager(Map<String, Object> model) {
+        model.put("employe", new Manager());
+        return "employes/detail";
     }
 }

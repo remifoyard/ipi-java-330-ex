@@ -30,14 +30,15 @@
                     <input type="number" value="${employe.salaire}" class="form-control" name="salaire" id="salaire">
                     <span class="input-group-addon">€</span>
                 </div>
+                <% if(emp.getId() != null) { %>
+                    <p>Si consultation employé existant on affiche la prime</p>
 
-                <p>Si consultation employé existant on affiche la prime</p>
-
-                <label class="form-control-label" for="nom">Prime Annuelle</label>
-                <div class="input-group">
-                    <input type="text" value="${employe.getPrimeAnnuelle()}" class="form-control" name="primeAnnuelle" id="primeAnnuelle">
-                    <span class="input-group-addon">€</span>
-                </div>
+                    <label class="form-control-label" for="nom">Prime Annuelle</label>
+                    <div class="input-group">
+                        <input type="text" value="${employe.getPrimeAnnuelle()}" class="form-control" name="primeAnnuelle" id="primeAnnuelle">
+                        <span class="input-group-addon">€</span>
+                    </div>
+                <% } %>
 
 
                 <label class="form-control-label" for="nom">Date d'embauche</label>
@@ -46,11 +47,11 @@
                 <% if(emp instanceof Commercial) { %>
                     <p>Si l'employé est un commercial</p>
                     <label class="form-control-label" for="performance">Performance</label>
-                    <input type="number" value="" class="form-control" name="performance" id="performance">
+                    <input type="number" value="${employe.getPerformance()}" class="form-control" name="performance" id="performance">
 
                     <label class="form-control-label" for="caAnnuel">CA Annuel</label>
                     <div class="input-group">
-                        <input type="number" value="${employe.getPrimeAnnuelle()}" class="form-control" name="caAnnuel" id="caAnnuel">
+                        <input type="number" value="${employe.getCaAnnuel()}" class="form-control" name="caAnnuel" id="caAnnuel">
                         <span class="input-group-addon">€</span>
                     </div>
                 <% } %>

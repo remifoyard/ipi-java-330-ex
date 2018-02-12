@@ -29,4 +29,13 @@ public class commercialController {
             return "employes/detail";
         }
     }
+
+
+    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String newCommercial( Commercial commercial, Map<String, Object> model) {
+            Commercial com = commercialService.creerEmploye(commercial);
+            model.put("employe", com);
+            return "employes/detail";
+    }
+
 }

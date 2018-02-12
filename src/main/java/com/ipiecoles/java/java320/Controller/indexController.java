@@ -1,5 +1,6 @@
 package com.ipiecoles.java.java320.Controller;
 
+import com.ipiecoles.java.java320.model.Commercial;
 import com.ipiecoles.java.java320.service.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

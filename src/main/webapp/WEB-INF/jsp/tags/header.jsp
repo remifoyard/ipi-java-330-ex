@@ -31,3 +31,7 @@
         </div>
     </div>
 </nav>
+<% if(request.getParameter("success") != null){ %>
+<%=request.getParameter("success")%><br>
+${param["success"]}
+<% } %>

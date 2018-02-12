@@ -85,3 +85,4 @@
         </div>
     </div>
 </div>
+<%@ include file="../tags/footer.jsp" %>
