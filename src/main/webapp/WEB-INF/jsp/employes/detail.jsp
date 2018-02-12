@@ -116,7 +116,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-2">
-                        <li class="list-group-item"><a href=""><span class="glyphicon glyphicon-remove"></span></a></li>
+                        <li class="list-group-item"><a href="/techniciens/${employe.id}/manager/${employe.manager.id}/delete"><span class="glyphicon glyphicon-remove"></span></a></li>
                     </div>
                     <% } %>
                     <p>Sinon</p>
